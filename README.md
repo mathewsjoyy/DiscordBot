@@ -1,6 +1,6 @@
 # Discord Bot
 
-##Simple Discord Bot for my personal server
+## Simple Discord Bot for my personal server
 
 ### Commands
 All commands can be found in the source code or through the *help* command which I will implement at some point.
