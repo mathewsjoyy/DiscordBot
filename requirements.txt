@@ -1,0 +1,6 @@
+youtube-dl==2021.6.6
+requests==2.25.1
+lxml==4.6.3
+discord.py==1.7.3
+ffmpeg==1.4
+ffmpeg-python==0.2.0
