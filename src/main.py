@@ -43,7 +43,7 @@ table = {
 
 def buildTrie():
     # Might need to change this
-    file = open('trie/badwords.txt', 'r')
+    file = open('src/trie/badwords.txt', 'r')
 
     for line in file:
         line = line.strip()
