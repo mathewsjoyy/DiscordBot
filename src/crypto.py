@@ -1,4 +1,5 @@
 import discord
+import json
 import requests
 from discord.ext import commands
 
@@ -14,9 +15,14 @@ class crypto(commands.Cog):
             coinData = requests.get(url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
             coinDataJSON = coinData.json()
             
-            print(coinDataJSON)
+            for i in range(len(coinDataJSON)):
+                if(coinDataJSON[i][id] == "coin"):
+                    await ctx.reply(f"*Current Price Of : {coin} = {coinDataJSON[i]['current_price']}*")
+                    return
             
-            await ctx.reply(f"Done {coin}")
+            await ctx.reply(f"*Can't seem to find that coin ({coin}) :/*")
+            
+            
     
             
       
