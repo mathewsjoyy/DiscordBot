@@ -16,7 +16,7 @@ class crypto(commands.Cog):
             coinDataJSON = coinData.json()
             
             for i in range(len(coinDataJSON)):
-                if(coinDataJSON[i][id] == "coin"):
+                if(coinDataJSON[i][id] == coin):
                     await ctx.reply(f"*Current Price Of : {coin} = {coinDataJSON[i]['current_price']}*")
                     return
             
