@@ -14,7 +14,7 @@ class crypto(commands.Cog):
             coinData = requests.get(url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
             coinDataJSON = coinData.json()
             
-            print(coinDataJSON['bitcoin'])
+            print(coinDataJSON)
             
             await ctx.reply(f"Done {coin}")
     
