@@ -43,7 +43,12 @@ table = {
 
 def buildTrie():
     # Might need to change this
-    file = open('src/trie/badwords.txt', 'r')
+    file = None
+    
+    try:
+        file = open('src/trie/badwords.txt', 'r') # For heroku
+    except FileNotFoundError:
+        file = open('C:\\Users\\mathe\\OneDrive\\Documents\\Coding\\DiscordBot\\src\\trie\\badwords.txt', 'r') # For local
 
     for line in file:
         line = line.strip()
