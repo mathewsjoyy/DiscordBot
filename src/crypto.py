@@ -12,17 +12,21 @@ class crypto(commands.Cog):
         if(coin == None):
             await ctx.reply("*Check your arguments!*\n```/getCryptoPrice COIN_NAME```")
         else:
-            coinData = requests.get(url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
+            try:
+                coinData = requests.get(url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
+            except Exception:
+                await ctx.reply("*The Crypto coin API is down, try again later!*")
+                return
+            
             coinDataJSON = coinData.json()
             
-            print("Here")
-            for i in range(len(coinDataJSON)):
+            for i in range(len(coinDataJSON)): # Search trough the json data for the coin
                 print(coinDataJSON[i]['id'])
                 if(coinDataJSON[i]['id'] == coin):
-                    await ctx.reply(f"*Current Price Of : {coin} = {coinDataJSON[i]['current_price']}*")
+                    await ctx.reply(f"*Current Price Of : {coin} =* **{coinDataJSON[i]['current_price']}**")
                     return
             
-            await ctx.reply(f"*Can't seem to find that coin ({coin}) :/*")
+            await ctx.reply(f"*Can't seem to find that coin (**{coin}**) :/*")
             
             
     

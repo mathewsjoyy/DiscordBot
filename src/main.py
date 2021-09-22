@@ -18,12 +18,14 @@ except Exception:
     print("No .env file found.")
 
 PREFIX = "/"
+COGS = [music, crypto]
 
 # Make the bot
 bot = commands.Bot(command_prefix=PREFIX, intents=discord.Intents.all())
 
-music.setup(bot)
-crypto.setup(bot)
+# Set up any cogs
+for x in range(len(COGS)):
+    COGS[x].setup(bot)
 
 
 # Make prefix tree for bad words capture
