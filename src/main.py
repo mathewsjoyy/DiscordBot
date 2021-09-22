@@ -9,6 +9,7 @@ import discord
 import requests
 import os
 import music
+import crypto
 
 # Load .env file
 try:
@@ -16,16 +17,15 @@ try:
 except Exception:
     print("No .env file found.")
 
-COGS = [music]
 PREFIX = "/"
 
 # Make the bot
 bot = commands.Bot(command_prefix=PREFIX, intents=discord.Intents.all())
 
-# Set up any cogs
-for x in range(len(COGS)):
-    COGS[x].setup(bot)
-    
+music.setup(bot)
+crypto.setup(bot)
+
+
 # Make prefix tree for bad words capture
 trie = Trie()
 table = {
@@ -70,6 +70,7 @@ def warn_user(user_id):
 # EVENTS #
 @bot.event
 async def on_message(message):
+    await bot.process_commands(message)
     # Check on images/videos are posts in images-videos channel
     if str(message.channel) == "images-videos" and message.content != "":
         await message.delete()
@@ -90,8 +91,6 @@ async def on_message(message):
             # Delete the bad message and warn the user
             await message.delete()
             await message.channel.send(warn_user(author_id))
-            
-    await bot.process_commands(message)
 
 @bot.event
 async def on_ready():
