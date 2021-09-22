@@ -11,7 +11,10 @@ import os
 import music
 
 # Load .env file
-load_dotenv()
+try:
+    load_dotenv()
+except Exception:
+    print("No .env file found.")
 
 COGS = [music]
 PREFIX = "/"
@@ -148,5 +151,5 @@ async def close_bot(ctx):
     
     
 if __name__ == "__main__":
-    bot.run(os.getenv("BOT_TOKEN"))
+    bot.run(os.environ.get("BOT_TOKEN"))
     
