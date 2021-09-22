@@ -15,7 +15,9 @@ class crypto(commands.Cog):
             coinData = requests.get(url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd')
             coinDataJSON = coinData.json()
             
+            print("Here")
             for i in range(len(coinDataJSON)):
+                print(coinDataJSON[i][id])
                 if(coinDataJSON[i][id] == coin):
                     await ctx.reply(f"*Current Price Of : {coin} = {coinDataJSON[i]['current_price']}*")
                     return
