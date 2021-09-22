@@ -43,7 +43,7 @@ table = {
 
 def buildTrie():
     # Might need to change this
-    file = open('src\\trie\\badwords.txt', 'r')
+    file = open('trie/badwords.txt', 'r')
 
     for line in file:
         line = line.strip()
@@ -147,8 +147,7 @@ async def close_bot(ctx):
     await ctx.send(random.choice(replies))
     await bot.close()
     
-    
-    
+
     
 if __name__ == "__main__":
     bot.run(os.environ.get("BOT_TOKEN"))
