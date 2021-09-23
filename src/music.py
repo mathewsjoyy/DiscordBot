@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import youtube_dl
+import pafy
 
 
 """
@@ -41,9 +42,10 @@ class music(commands.Cog):
             # Create stream to play audio and then stream directly into vc
             with youtube_dl.YoutubeDL(YTDL_OPTIONS) as ydl:
                 info = ydl.extract_info(url, download=False)
-                url2 = info["formats"][0]["url"]
-                source = await discord.FFmpegOpusAudio.from_probe(url2,**FFMPEG_OPTIONS)
-                vc.play(source) # play the audio
+                
+                url = pafy.new(url).getbestaudio().url
+                              
+                vc.play(discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(url))) # play the audio
                 await ctx.send(f"*Playing {info['title']} -* 🎵")
     
     @commands.command()

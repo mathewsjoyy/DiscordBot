@@ -19,6 +19,7 @@ class crypto(commands.Cog):
                 return
             
             coinDataJSON = coinData.json()
+            coin = coin.lower()
             
             for i in range(len(coinDataJSON)): # Search trough the json data for the coin
                 print(coinDataJSON[i]['id'])
