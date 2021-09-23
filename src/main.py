@@ -186,7 +186,6 @@ async def eightBall(ctx,*, question:str = None):
 
         await ctx.reply(f"*Question :* **{question}** *, Answer :* **{random.choice(answers)}**")
     
-    
 
     
 if __name__ == "__main__":
