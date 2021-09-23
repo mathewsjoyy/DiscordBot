@@ -43,9 +43,12 @@ class crypto(commands.Cog):
             return
             
         coinDataJSON = coinData.json()
+        supported = ""
         
         for i in range(len(coinDataJSON)): # Search trough the json data for the coin
-            await ctx.reply(f"*{coinDataJSON[i]['id']}* ", end=" ")
+            supported += f"*{coinDataJSON[i]['id']}*"
+        
+        await ctx.reply(supported)
         
         
 def setup(bot):
