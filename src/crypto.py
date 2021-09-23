@@ -46,9 +46,9 @@ class crypto(commands.Cog):
         supported = ""
         
         for i in range(len(coinDataJSON)): # Search trough the json data for the coin
-            supported += f"*{coinDataJSON[i]['id']}*"
+            supported += f"*{coinDataJSON[i]['id']}*, "
         
-        await ctx.reply(supported)
+        await ctx.reply("**Supported Coins:**\n" + supported)
         
         
 def setup(bot):
