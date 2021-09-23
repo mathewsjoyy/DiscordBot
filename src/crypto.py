@@ -12,7 +12,6 @@ class crypto(commands.Cog):
         if(coin == None):
             await ctx.reply("*Check your arguments!*\n```/getCryptoPrice COIN_NAME```")
         else:
-            
             coin = coin.lower()
             
             try:
@@ -46,7 +45,7 @@ class crypto(commands.Cog):
         coinDataJSON = coinData.json()
         
         for i in range(len(coinDataJSON)): # Search trough the json data for the coin
-            ctx.reply(f"*{coinDataJSON[i]['id']}* ", end=" ")
+            await ctx.reply(f"*{coinDataJSON[i]['id']}* ", end=" ")
         
         
 def setup(bot):
